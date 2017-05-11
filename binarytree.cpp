@@ -70,7 +70,17 @@ void lastOrder(BiTNode *Tree)
 		cout<<Tree->data<<endl;
 	}  
 }  
+int maxDepth(BiTNode *Tree)
+{
+	int depth;
+	if (Tree == NULL) return 0;
 
+	int leftdepth = maxDepth(Tree->lchild);
+	int rightdepth = maxDepth(Tree->rchild);
+
+	depth = leftdepth>rightdepth?leftdepth+1:rightdepth+1;
+	return depth;
+}
 int main(void)
 {
 	BiTNode* root;
@@ -80,5 +90,6 @@ int main(void)
 	PreOrder(root);
 	midOrder(root);
 	lastOrder(root);
+	cout<<maxDepth(root)<<endl;
 	return 1;
 }
